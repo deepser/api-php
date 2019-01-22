@@ -87,6 +87,24 @@ foreach($userCollection as $user){
 
 ````
 
+Company
+-------
+
+```php
+// ...
+// load an existing company by id
+$company = new \DeepDesk\Entity\Company();
+$company->load(600);
+//...
+// load company collection
+$companyCollection = \DeepDesk\Entity\Company::getCollection();
+$companyCollection->addFilter('name', 'like', '%ACME%');
+foreach($companyCollection as $company){
+    echo $company->getName();
+}
+
+````
+
 
 Credits
 -------
