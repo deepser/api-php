@@ -1,0 +1,46 @@
+{
+  "name"       : "deep-desk/deepdesk-php-api",
+  "type"       : "library",
+  "description": "DeepDesk API PHP library",
+  "keywords"   : ["DeepDesk", "API", "Help Desk", "Service Desk", "CRM"],
+  "homepage"   : "https://github.com/deep-desk/deepdesk-php-api",
+  "license"    : "MIT",
+
+  "authors": [
+    {
+      "name"    : "Serman Nerjaku",
+      "email"   : "serman.nerjaku@into-deep.com",
+      "homepage": "https://www.deep-desk.com",
+      "role"    : "Developer"
+    }
+  ],
+
+  "support": {
+    "issues": "https://github.com/deep-desk/deepdesk-php-api/issues",
+    "source": "https://github.com/deep-desk/deepdesk-php-api"
+  },
+
+  "require": {
+    "php": ">=5.5.9"
+  },
+
+  "require-dev": {
+    "guzzlehttp/guzzle": "^5.3|^6.3"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "DeepDesk\\": "src/"
+    }
+  },
+
+  "config": {
+    "preferred-install": "dist"
+  },
+
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
