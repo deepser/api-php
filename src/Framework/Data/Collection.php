@@ -17,6 +17,7 @@ namespace DeepDesk\Framework\Data;
 
 
 use DeepDesk\DeepDesk;
+use DeepDesk\Entity\AbstractEntity;
 use DeepDesk\Framework\Data\Entity\Factory;
 use DeepDesk\Framework\DataObject;
 
@@ -91,6 +92,12 @@ class Collection implements \IteratorAggregate, \Countable
      * @method create
      */
     protected $_entityFactory;
+
+    /**
+     * @var null|AbstractEntity
+     */
+    protected $_entity = null;
+
     /**
      * @param string $entityClass
      */
@@ -99,6 +106,30 @@ class Collection implements \IteratorAggregate, \Countable
         $this->_itemObjectClass = $entityClass ? $entityClass : DataObject::class;
         $this->_entityFactory = new Factory($this->_itemObjectClass);
     }
+
+    /**
+     * @return AbstractEntity|null
+     */
+    public function getEntity(){
+        return $this->_entity;
+    }
+
+    /**
+     * @param AbstractEntity $entity
+     * @return $this
+     */
+    public function setEntity(AbstractEntity $entity){
+        $this->_entity = $entity;
+        return $this;
+    }
+
+    public function getEntityObject(){
+        if($this->getEntity() !== null)
+            return $this->getEntity();
+
+        return $this->_entityFactory->create();
+    }
+
     /**
      * Add collection filter
      *
@@ -669,7 +700,7 @@ class Collection implements \IteratorAggregate, \Countable
         try{
             $response = DeepDesk::getAdapter()->get(
                 sprintf('%s?%s',
-                    $this->_entityFactory->create()->getMultipleEndpoint(),
+                    $this->getEntityObject()->getMultipleEndpoint(),
                     $this->_translateQueryFilters())
             );
 

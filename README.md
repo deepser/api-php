@@ -67,7 +67,23 @@ $operation->setDescription('can you help me?');
 $operation->setType(123);
 $operation->save();
 
+````
 
+User
+-------
+
+```php
+// ...
+// load an existing user by id
+$user = new \DeepDesk\Entity\User();
+$user->load(600);
+//...
+// load user collection
+$userCollection = \DeepDesk\Entity\User::getCollection();
+$userCollection->addFilter('company_id', 'eq', 123);
+foreach($userCollection as $user){
+    echo $user->getFirstname();
+}
 
 ````
 

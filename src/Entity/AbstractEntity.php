@@ -134,7 +134,8 @@ abstract class AbstractEntity extends \DeepDesk\Framework\DataObject
      * @return Collection
      */
     public static function getCollection(){
-        return new Collection(get_called_class());
+        $collection = new Collection(get_called_class());
+        return $collection;
     }
 
     /**
