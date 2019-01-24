@@ -1,7 +1,9 @@
 DeepDesk API
 ===============
 
-Let's consume the [DeepDesk API](https://www.deep-desk.com/api/) ([issues](https://github.com/deep-desk/deepdesk-php-api/issues))
+Let's consume the DeepDesk API ([issues](https://github.com/deep-desk/deepdesk-php-api/issues))
+
+DeepDesk is a [help desk software](https://www.deep-desk.com/) and you can find more information in [DeepDesk API Docs](https://www.deep-desk.com/api/)
 
 Installation
 ------------
