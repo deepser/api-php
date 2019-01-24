@@ -79,6 +79,11 @@ User
 // load an existing user by id
 $user = new \DeepDesk\Entity\User();
 $user->load(600);
+
+// load user by username
+$user = new \DeepDesk\Entity\User();
+$user->load('myusername', 'username');
+
 //...
 // load user collection
 $userCollection = \DeepDesk\Entity\User::getCollection();
