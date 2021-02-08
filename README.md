@@ -10,13 +10,13 @@ Installation
 
 This library can be found on [Packagist](https://packagist.org/packages/deepser/api-php).
 The recommended way to install this is through [composer](http://getcomposer.org).
-We support PHP 5.5.9-7.3. This library is no longer tested on HHVM.
+We support PHP >=7.0. This library is no longer tested on HHVM.
 
 Run these commands to install composer, the library and its dependencies:
 
 ```bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar require deepser/api-php:^1.0
+$ php composer.phar require deepser/api-php
 ```
 
 You then need to install **one** of the following:
@@ -29,7 +29,7 @@ Or edit `composer.json` and add:
 ```json
 {
     "require": {
-        "deepser/api-php": "^1.0"
+        "deepser/api-php": "^1.0.1"
     }
 }
 ```
