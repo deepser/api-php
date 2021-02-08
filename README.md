@@ -21,8 +21,7 @@ $ php composer.phar require deepser/api-php:^1.0
 
 You then need to install **one** of the following:
 ```bash
-$ php composer.phar require guzzlehttp/guzzle:^5.3
-$ php composer.phar require guzzlehttp/guzzle:^6.3
+$ php composer.phar update
 ```
 
 Or edit `composer.json` and add:
