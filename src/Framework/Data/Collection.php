@@ -13,13 +13,13 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Framework\Data;
+namespace Deepser\Framework\Data;
 
 
-use DeepDesk\DeepDesk;
-use DeepDesk\Entity\AbstractEntity;
-use DeepDesk\Framework\Data\Entity\Factory;
-use DeepDesk\Framework\DataObject;
+use Deepser\Deepser;
+use Deepser\Entity\AbstractEntity;
+use Deepser\Framework\Data\Entity\Factory;
+use Deepser\Framework\DataObject;
 
 class Collection implements \IteratorAggregate, \Countable
 {
@@ -28,7 +28,7 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Collection items
      *
-     * @var \DeepDesk\Framework\DataObject[]
+     * @var \Deepser\Framework\DataObject[]
      */
     protected $_items = [];
     /**
@@ -36,7 +36,7 @@ class Collection implements \IteratorAggregate, \Countable
      *
      * @var string
      */
-    protected $_itemObjectClass = \DeepDesk\Framework\DataObject::class;
+    protected $_itemObjectClass = \Deepser\Framework\DataObject::class;
     /**
      * Order configuration
      *
@@ -46,7 +46,7 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Filters configuration
      *
-     * @var \DeepDesk\Framework\DataObject[]
+     * @var \Deepser\Framework\DataObject[]
      */
     protected $_filters = [];
     /**
@@ -140,7 +140,7 @@ class Collection implements \IteratorAggregate, \Countable
      */
     public function addFilter($field, $value, $type = 'eq')
     {
-        $filter = new \DeepDesk\Framework\DataObject();
+        $filter = new \Deepser\Framework\DataObject();
         // implements ArrayAccess
         $filter['field'] = $field;
         $filter['value'] = $value;
@@ -190,7 +190,7 @@ class Collection implements \IteratorAggregate, \Countable
      */
     public function addFieldToFilter($field, $condition)
     {
-        $filter = new \DeepDesk\Framework\DataObject();
+        $filter = new \Deepser\Framework\DataObject();
         // implements ArrayAccess
         $filter['field'] = $field;
 
@@ -216,7 +216,7 @@ class Collection implements \IteratorAggregate, \Countable
      * - array() -- get all filters
      *
      * @param string|string[] $field
-     * @return \DeepDesk\Framework\DataObject|\DeepDesk\Framework\DataObject[]|void
+     * @return \Deepser\Framework\DataObject|\Deepser\Framework\DataObject[]|void
      */
     public function getFilter($field)
     {
@@ -326,7 +326,7 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Retrieve collection first item
      *
-     * @return \DeepDesk\Framework\DataObject
+     * @return \Deepser\Framework\DataObject
      */
     public function getFirstItem()
     {
@@ -340,7 +340,7 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Retrieve collection last item
      *
-     * @return \DeepDesk\Framework\DataObject
+     * @return \Deepser\Framework\DataObject
      */
     public function getLastItem()
     {
@@ -353,7 +353,7 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Retrieve collection items
      *
-     * @return \DeepDesk\Framework\DataObject[]
+     * @return \Deepser\Framework\DataObject[]
      */
     public function getItems()
     {
@@ -398,7 +398,7 @@ class Collection implements \IteratorAggregate, \Countable
      *
      * @param   string $column
      * @param   mixed $value
-     * @return  \DeepDesk\Framework\DataObject || null
+     * @return  \Deepser\Framework\DataObject || null
      */
     public function getItemByColumnValue($column, $value)
     {
@@ -413,11 +413,11 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Adding item to item array
      *
-     * @param   \DeepDesk\Framework\DataObject $item
+     * @param   \Deepser\Framework\DataObject $item
      * @return $this
      * @throws \Exception
      */
-    public function addItem(\DeepDesk\Framework\DataObject $item)
+    public function addItem(\Deepser\Framework\DataObject $item)
     {
         $itemId = $this->_getItemId($item);
         if ($itemId !== null) {
@@ -435,7 +435,7 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Add item that has no id to collection
      *
-     * @param \DeepDesk\Framework\DataObject $item
+     * @param \Deepser\Framework\DataObject $item
      * @return $this
      */
     protected function _addItem($item)
@@ -446,10 +446,10 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Retrieve item id
      *
-     * @param \DeepDesk\Framework\DataObject $item
+     * @param \Deepser\Framework\DataObject $item
      * @return mixed
      */
-    protected function _getItemId(\DeepDesk\Framework\DataObject $item)
+    protected function _getItemId(\Deepser\Framework\DataObject $item)
     {
         return $item->getId();
     }
@@ -612,8 +612,8 @@ class Collection implements \IteratorAggregate, \Countable
      */
     public function setItemObjectClass($className)
     {
-        if (!is_a($className, \DeepDesk\Framework\DataObject::class, true)) {
-            throw new \InvalidArgumentException($className . ' does not extend \DeepDesk\Framework\DataObject');
+        if (!is_a($className, \Deepser\Framework\DataObject::class, true)) {
+            throw new \InvalidArgumentException($className . ' does not extend \Deepser\Framework\DataObject');
         }
         $this->_itemObjectClass = $className;
         return $this;
@@ -621,7 +621,7 @@ class Collection implements \IteratorAggregate, \Countable
     /**
      * Retrieve collection empty item
      *
-     * @return \DeepDesk\Framework\DataObject
+     * @return \Deepser\Framework\DataObject
      */
     public function getNewEmptyItem()
     {
@@ -698,7 +698,7 @@ class Collection implements \IteratorAggregate, \Countable
         }
 
         try{
-            $response = DeepDesk::getAdapter()->get(
+            $response = Deepser::getAdapter()->get(
                 sprintf('%s?%s',
                     $this->getEntityObject()->getMultipleEndpoint(),
                     $this->_translateQueryFilters())
@@ -849,7 +849,7 @@ class Collection implements \IteratorAggregate, \Countable
      * Retrieve item by id
      *
      * @param mixed $idValue
-     * @return \DeepDesk\Framework\DataObject
+     * @return \Deepser\Framework\DataObject
      */
     public function getItemById($idValue)
     {

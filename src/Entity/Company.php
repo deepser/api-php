@@ -13,7 +13,7 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Entity;
+namespace Deepser\Entity;
 
 class Company extends AbstractEntity
 {

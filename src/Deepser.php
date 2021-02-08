@@ -3,10 +3,10 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk;
+namespace Deepser;
 
 
-final class DeepDesk
+final class Deepser
 {
     static private $_adapter = null;
     static private $_client = null;
@@ -40,7 +40,7 @@ final class DeepDesk
 
     public static function getAdapter(){
         if(self::$_adapter == null){
-            self::$_adapter = new \DeepDesk\Adapter\GuzzleHttpAdapter(self::$_host, self::getClient());
+            self::$_adapter = new \Deepser\Adapter\GuzzleHttpAdapter(self::$_host, self::getClient());
         }
 
         return self::$_adapter;

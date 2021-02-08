@@ -13,7 +13,7 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Adapter;
+namespace Deepser\Adapter;
 
 
 interface AdapterInterface

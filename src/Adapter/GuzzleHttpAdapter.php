@@ -13,10 +13,10 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Adapter;
+namespace Deepser\Adapter;
 
 
-use DeepDesk\Framework\DataObject;
+use Deepser\Framework\DataObject;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\RequestException;

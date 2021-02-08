@@ -13,10 +13,10 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Entity\Cmdb;
+namespace Deepser\Entity\Cmdb;
 
 
-use DeepDesk\Entity\AbstractEntity;
+use Deepser\Entity\AbstractEntity;
 
 class Ci extends AbstractEntity
 {

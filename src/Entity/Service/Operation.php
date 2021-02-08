@@ -13,9 +13,9 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Entity\Service;
+namespace Deepser\Entity\Service;
 
-use DeepDesk\Entity\AbstractEntity;
+use Deepser\Entity\AbstractEntity;
 
 class Operation extends AbstractEntity
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace DeepDesk\Framework;
+namespace Deepser\Framework;
 
 /**
  * @copyright      Copyright (c) 2019
@@ -120,7 +120,7 @@ class DataObject implements \ArrayAccess
             } elseif (is_string($data)) {
                 $data = explode(PHP_EOL, $data);
                 $data = isset($data[$index]) ? $data[$index] : null;
-            } elseif ($data instanceof \DeepDesk\Framework\DataObject) {
+            } elseif ($data instanceof \Deepser\Framework\DataObject) {
                 $data = $data->getData($index);
             } else {
                 $data = null;
@@ -143,7 +143,7 @@ class DataObject implements \ArrayAccess
         foreach ($keys as $key) {
             if ((array)$data === $data && isset($data[$key])) {
                 $data = $data[$key];
-            } elseif ($data instanceof \DeepDesk\Framework\DataObject) {
+            } elseif ($data instanceof \Deepser\Framework\DataObject) {
                 $data = $data->getDataByKey($key);
             } else {
                 return null;
@@ -445,7 +445,7 @@ class DataObject implements \ArrayAccess
                 $debug[$key] = $value;
             } elseif (is_array($value)) {
                 $debug[$key] = $this->debug($value, $objects);
-            } elseif ($value instanceof \DeepDesk\Framework\DataObject) {
+            } elseif ($value instanceof \Deepser\Framework\DataObject) {
                 $debug[$key . ' (' . get_class($value) . ')'] = $value->debug(null, $objects);
             }
         }

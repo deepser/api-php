@@ -13,7 +13,7 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Framework\Data\Entity;
+namespace Deepser\Framework\Data\Entity;
 
 
 class Factory
@@ -25,8 +25,8 @@ class Factory
     }
 
     /**
-     * @param \DeepDesk\Entity\AbstractEntity|null $className
-     * @return \DeepDesk\Entity\AbstractEntity
+     * @param \Deepser\Entity\AbstractEntity|null $className
+     * @return \Deepser\Entity\AbstractEntity
      */
     public function create($className = null) {
         $reflection = new \ReflectionClass($className ? $className : $this->_className);

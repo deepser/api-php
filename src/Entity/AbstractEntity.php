@@ -3,12 +3,12 @@
  * @copyright      Copyright (c) 2019
  */
 
-namespace DeepDesk\Entity;
+namespace Deepser\Entity;
 
-use DeepDesk\DeepDesk;
-use DeepDesk\Framework\Data\Collection;
+use Deepser\Deepser;
+use Deepser\Framework\Data\Collection;
 
-abstract class AbstractEntity extends \DeepDesk\Framework\DataObject
+abstract class AbstractEntity extends \Deepser\Framework\DataObject
 {
     /**
      * @var string
@@ -32,11 +32,11 @@ abstract class AbstractEntity extends \DeepDesk\Framework\DataObject
     protected $_isObjectNew     = null;
 
     public function getEndpoint(){
-        return trim(DeepDesk::getAdapter()->getHost(), '/') . static::ENDPOINT;
+        return trim(Deepser::getAdapter()->getHost(), '/') . static::ENDPOINT;
     }
 
     public function getMultipleEndpoint(){
-        return trim(DeepDesk::getAdapter()->getHost(), '/') . static::MULTIPLE_ENDPOINT;
+        return trim(Deepser::getAdapter()->getHost(), '/') . static::MULTIPLE_ENDPOINT;
     }
 
     /**
@@ -83,7 +83,7 @@ abstract class AbstractEntity extends \DeepDesk\Framework\DataObject
     public function load($id, $field = null)
     {
         try{
-            $response = DeepDesk::getAdapter()->get(
+            $response = Deepser::getAdapter()->get(
                 sprintf('%s/%s/%s', $this->getEndpoint(), $id, $field)
             );
 
@@ -97,17 +97,17 @@ abstract class AbstractEntity extends \DeepDesk\Framework\DataObject
     }
 
     /**
-     * @param \DeepDesk\Entity\AbstractEntity $entity
+     * @param \Deepser\Entity\AbstractEntity $entity
      * @return $this
      */
     public function save(){
         if($this->isObjectNew()){
-            $response = DeepDesk::getAdapter()->post(
+            $response = Deepser::getAdapter()->post(
                 sprintf('%s', $this->getMultipleEndpoint()),
                 $this->getData()
             );
         }else{
-            $response = DeepDesk::getAdapter()->put(
+            $response = Deepser::getAdapter()->put(
                 sprintf('%s/%d', $this->getEndpoint(), $this->getId()),
                 $this->getData()
             );
@@ -123,7 +123,7 @@ abstract class AbstractEntity extends \DeepDesk\Framework\DataObject
      * @return $this
      */
     public function delete(){
-        $response = DeepDesk::getAdapter()->delete(
+        $response = Deepser::getAdapter()->delete(
             sprintf('%s/%d', $this->getEndpoint(), $this->getId())
         );
 
