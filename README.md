@@ -1,14 +1,14 @@
-DeepDesk API
+Deepser API
 ===============
 
-Let's consume the DeepDesk API ([issues](https://github.com/deep-desk/deepdesk-php-api/issues))
+Let's consume the Deepser API ([issues](https://github.com/deepser/api-php/issues))
 
-DeepDesk is a [help desk software](https://www.deep-desk.com/) and you can find more information in [DeepDesk API Docs](https://www.deep-desk.com/api/)
+Deepser is a [help desk software](https://www.deepser.com/) and you can find more information in [Deepser API Docs](https://www.deepser.com/api/)
 
 Installation
 ------------
 
-This library can be found on [Packagist](https://packagist.org/packages/deep-desk/deepdesk-php-api).
+This library can be found on [Packagist](https://packagist.org/packages/deepser/api-php).
 The recommended way to install this is through [composer](http://getcomposer.org).
 We support PHP 5.5.9-7.3. This library is no longer tested on HHVM.
 
@@ -16,7 +16,7 @@ Run these commands to install composer, the library and its dependencies:
 
 ```bash
 $ curl -sS https://getcomposer.org/installer | php
-$ php composer.phar require deep-desk/deepdesk-php-api:^1.0
+$ php composer.phar require deepser/api-php:^1.0
 ```
 
 You then need to install **one** of the following:
@@ -30,7 +30,7 @@ Or edit `composer.json` and add:
 ```json
 {
     "require": {
-        "deep-desk/deepdesk-php-api": "^1.0"
+        "deepser/api-php": "^1.0"
     }
 }
 ```
@@ -44,11 +44,11 @@ Example
 
 require 'vendor/autoload.php';
 
-$host = 'https://your.deepdesk.net';
+$host = 'https://your.deepser.net';
 $username = 'username';
 $password = 'password';
 // create a deep desk object
-\DeepDesk\DeepDesk::init($host, $username, $password);
+\Deepser\Deepser::init($host, $username, $password);
 
 // ...
 ```
@@ -59,11 +59,11 @@ Operation (Ticket)
 ```php
 // ...
 // load an existing operation by id
-$operation = new \DeepDesk\Entity\Service\Operation();
+$operation = new \Deepser\Entity\Service\Operation();
 $operation->load(1000);
 //...
 // create new operation object
-$operation = new \DeepDesk\Entity\Service\Operation();
+$operation = new \Deepser\Entity\Service\Operation();
 $operation->setTitle('My new ticket');
 $operation->setDescription('can you help me?');
 $operation->setType(123);
@@ -77,16 +77,16 @@ User
 ```php
 // ...
 // load an existing user by id
-$user = new \DeepDesk\Entity\User();
+$user = new \Deepser\Entity\User();
 $user->load(600);
 
 // load user by username
-$user = new \DeepDesk\Entity\User();
+$user = new \Deepser\Entity\User();
 $user->load('myusername', 'username');
 
 //...
 // load user collection
-$userCollection = \DeepDesk\Entity\User::getCollection();
+$userCollection = \Deepser\Entity\User::getCollection();
 $userCollection->addFilter('company_id', 'eq', 123);
 foreach($userCollection as $user){
     echo $user->getFirstname();
@@ -100,11 +100,11 @@ Company
 ```php
 // ...
 // load an existing company by id
-$company = new \DeepDesk\Entity\Company();
+$company = new \Deepser\Entity\Company();
 $company->load(600);
 //...
 // load company collection
-$companyCollection = \DeepDesk\Entity\Company::getCollection();
+$companyCollection = \Deepser\Entity\Company::getCollection();
 $companyCollection->addFilter('name', 'like', '%ACME%');
 foreach($companyCollection as $company){
     echo $company->getName();
@@ -121,7 +121,7 @@ Credits
 Support
 -------
 
-[Please open an issue in github](https://github.com/deep-desk/deepdesk-php-api/issues)
+[Please open an issue in github](https://github.com/deepser/api-php/issues)
 
 Contributor Code of Conduct
 ---------------------------
@@ -155,5 +155,5 @@ Covenant](http:contributor-covenant.org), version 1.0.0, available at
 License
 -------
 
-DeepDesk API is released under the MIT License. See the bundled
-[LICENSE](https://github.com/deep-desk/deepdesk-php-api/blob/master/LICENSE) file for details.
+Deepser API is released under the MIT License. See the bundled
+[LICENSE](https://github.com/deepser/api-php/blob/master/LICENSE) file for details.
