@@ -37,7 +37,7 @@ Or edit `composer.json` and add:
 
 Example
 -------
-
+Login with Basic Authentication
 ```php
 <?php
 
@@ -48,6 +48,20 @@ $username = 'username';
 $password = 'password';
 // create a deep desk object
 \Deepser\Deepser::init($host, $username, $password);
+
+// ...
+```
+Login with Token Based Authentication
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$host = 'https://your.deepser.net';
+$username = 'username';
+$token = 'mytokenhere';
+// create a deep desk object
+\Deepser\Deepser::init($host, $token);
 
 // ...
 ```

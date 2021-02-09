@@ -8,21 +8,39 @@ namespace Deepser;
 
 final class Deepser
 {
+    const AUTH_BASIC = 'basic';
+    const AUTH_TOKEN = 'token';
+
     static private $_adapter = null;
     static private $_client = null;
     static private $_host = null;
+    static private $_authType = null;
+    static private $_token = null;
     static private $_username = null;
     static private $_password = null;
 
+    /**
+     * @param null $host
+     * @param null $username
+     * @param null $password
+     */
     public static function init($host = null, $username = null, $password = null){
         if($host){
             self::$_host = $host;
         }
+
         if($username){
             self::$_username = $username;
         }
         if($password){
             self::$_password = $password;
+        }
+
+        if($username && $password){
+            self::$_authType = self::AUTH_BASIC;
+        }else{
+            self::$_authType = self::AUTH_TOKEN;
+            self::setToken($username);
         }
     }
 
@@ -36,6 +54,10 @@ final class Deepser
 
     public static function setPassword($password){
         self::$_password = $password;
+    }
+
+    public static function setToken($token){
+        self::$_token = $token;
     }
 
     public static function getAdapter(){
@@ -69,9 +91,15 @@ final class Deepser
      */
     public static function getHeaders(){
         $token = base64_encode(self::$_username . ":" . self::$_password);
-        return [
-            'Authorization' => 'Basic ' . $token,
-            'Accept'        => 'application/json',
+        $headers = [
+            'Accept'        => 'application/json'
         ];
+        if(self::$_authType == self::AUTH_BASIC){
+            $headers['Authorization'] = 'Basic ' . $token;
+        }else{
+            $headers['Authorization'] = 'Bearer ' . self::$_token;
+        }
+
+        return $headers;
     }
 }
